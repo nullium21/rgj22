@@ -14,6 +14,10 @@ config/name="rgj22"
 run/main_scene="res://forest-scene.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Stats="*res://Stats.gd"
+
 [display]
 
 window/size/width=320

@@ -94,7 +94,7 @@ func _physics_process(delta):
 				show_tip("door_key_required")
 				tip_shown = true
 				if Input.is_action_pressed("melee_attack"):
-					get_tree().change_scene("res://door-minigame/scene.tscn")
+					get_tree().change_scene("res://door-minigame/mini-game-2-scene.tscn")
 			elif collider.is_in_group("magic-fern"):
 				# TODO: play some animation, etc.
 				get_tree().change_scene("res://cave/scene.tscn")

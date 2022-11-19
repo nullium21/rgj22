@@ -49,20 +49,6 @@ centered_textures = true
 format = 1
 tile_data = PoolIntArray( -2359294, 11, 9, -2097149, 11, 9, -2031615, 11, 65545, -2031614, 11, 65544, -2031612, 11, 3, -2031611, 11, 65544, -1966080, 11, 9, -1900544, 11, 65538, -1900543, 11, 65544, -1900540, 11, 65544, -1835006, 11, 7, -1572863, 11, 196608, -1572861, 11, 65544, -1441787, 11, 3, -1376249, 11, 65544, -1114106, 11, 65544, -917499, 11, 65544, -720895, 11, 196609, -589829, 11, 65544, -524295, 11, 3, -589819, 11, 65544, -589817, 11, 65544, -458755, 11, 8, -524286, 11, 65544, -393220, 11, 8, -393219, 11, 65544, -393218, 11, 8, -458744, 11, 65544, -327686, 11, 65544, -327684, 11, 8, -327683, 11, 8, -327682, 11, 8, -393215, 11, 65544, -393212, 11, 65544, -262150, 11, 65544, -262148, 11, 8, -262147, 11, 8, -262146, 11, 8, -262145, 11, 65544, -196614, 11, 65544, -196611, 11, 65544, -131078, 11, 65544, -131075, 11, 8, -196608, 11, 65544, -65543, 11, 65544, -8, 11, 65539, -65535, 11, 196609, 131068, 11, 65538 )
 
-[node name="Side-view player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, 0 )
-script = ExtResource( 6 )
-gravity_enabled = false
-ai_enabled = false
-ai_retreat_speed_modifier = 1.5
-ai_retreat_health_trigger = 0.4
-ai_attack_cooldown = 0.3
-max_health = 5
-health = 5
-heal_delay = 0.1
-
-[node name="Skybox" parent="Side-view player" instance=ExtResource( 7 )]
-
 [node name="MagicFern" type="Node2D" parent="."]
 position = Vector2( 45, -540 )
 __meta__ = {
@@ -437,3 +423,17 @@ position = Vector2( 224, 192 )
 
 [node name="Pine tree59" parent="Trees" instance=ExtResource( 4 )]
 position = Vector2( 272, 192 )
+
+[node name="Side-view player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 0 )
+script = ExtResource( 6 )
+gravity_enabled = false
+ai_enabled = false
+ai_retreat_speed_modifier = 1.5
+ai_retreat_health_trigger = 0.4
+ai_attack_cooldown = 0.3
+max_health = 5
+health = 5
+heal_delay = 0.1
+
+[node name="Skybox" parent="Side-view player" instance=ExtResource( 7 )]
