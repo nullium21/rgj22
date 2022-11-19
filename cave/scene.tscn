@@ -306,7 +306,7 @@ shape = SubResource( 20 )
 [node name="Sprite" type="Sprite" parent="Enemy4"]
 texture = SubResource( 21 )
 
-[node name="Door" type="StaticBody2D" parent="." groups=["teleport-platformer"]]
+[node name="Door" type="StaticBody2D" parent="." groups=["door"]]
 position = Vector2( 432, 28 )
 
 [node name="Sprite" type="Sprite" parent="Door"]

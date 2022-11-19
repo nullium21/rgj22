@@ -18,7 +18,7 @@ func get_drag_data(position):
 func can_drop_data(position, data):
 	return true
 	return false
-	
+
 func drop_data(position, data):
 	self.rect_size = Vector2(16, 16)
 	texture = data["origin_texture"]

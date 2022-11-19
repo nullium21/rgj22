@@ -89,10 +89,12 @@ func _physics_process(delta):
 			if collider.is_in_group("teleport-spawn"):
 				get_tree().change_scene("res://base-scene.tscn")
 			elif collider.is_in_group("teleport-platformer"):
+				get_tree().change_scene("res://platformer-scene.tscn")
+			elif collider.is_in_group("door"):
 				show_tip("door_key_required")
 				tip_shown = true
 				if Input.is_action_pressed("melee_attack"):
-					get_tree().change_scene("res://platformer-scene.tscn")
+					get_tree().change_scene("res://door-minigame/scene.tscn")
 			elif collider.is_in_group("magic-fern"):
 				# TODO: play some animation, etc.
 				get_tree().change_scene("res://cave/scene.tscn")
