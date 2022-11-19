@@ -233,11 +233,6 @@ shape = SubResource( 22 )
 [node name="Sprite" type="Sprite" parent="Player"]
 texture = ExtResource( 1 )
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( -187, -91 )
-anchor_mode = 0
-current = true
-
 [node name="Tip" type="NinePatchRect" parent="Player"]
 visible = false
 margin_left = 8.0
@@ -259,6 +254,9 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 24 )
 text = "Press E to enter."
 autowrap = true
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
 
 [node name="Enemy" type="KinematicBody2D" parent="."]
 position = Vector2( 240, 432 )
