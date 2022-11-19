@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tilemaps/forest.tres" type="TileSet" id=2]
 [ext_resource path="res://tilemaps/forest.png" type="Texture" id=3]
 [ext_resource path="res://pine_tree.tscn" type="PackedScene" id=4]
 [ext_resource path="res://tilemaps/gradient.png" type="Texture" id=5]
+[ext_resource path="res://scripts/living-entity.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 24, 2.8 )
@@ -28,7 +29,6 @@ texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gradient/StaticBody2D"]
 position = Vector2( -1.52588e-06, 5.2 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 3 )
 
 [node name="Ground" type="TileMap" parent="."]
@@ -50,7 +50,15 @@ tile_data = PoolIntArray( -2359294, 11, 9, -2097149, 11, 9, -2031615, 11, 65545,
 
 [node name="Side-view player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, 0 )
+script = ExtResource( 6 )
 gravity_enabled = false
+ai_enabled = false
+ai_retreat_speed_modifier = 1.5
+ai_retreat_health_trigger = 0.4
+ai_attack_cooldown = 0.3
+max_health = 5
+health = 5
+heal_delay = 0.1
 
 [node name="MagicFern" type="Node2D" parent="."]
 position = Vector2( 45, -540 )

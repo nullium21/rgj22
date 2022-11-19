@@ -43,6 +43,6 @@ func _physics_process(_delta):
 			get_tree().change_scene("res://platformer-scene.tscn")
 		elif collision.collider.is_in_group("magic-fern"):
 			# TODO: play some animation, etc.
-			get_tree().change_scene("res://base-scene.tscn")
+			get_tree().change_scene("res://cave/scene.tscn")
 		
 	move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP)
