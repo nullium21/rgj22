@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="rgj22"
-run/main_scene="res://base-scene.tscn"
+run/main_scene="res://forest-scene.tscn"
 config/icon="res://icon.png"
 
 [display]
