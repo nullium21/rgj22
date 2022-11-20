@@ -430,7 +430,7 @@ points = PoolVector2Array( 0, 12.6418, 18, 12.6418, 18, 18, 0, 18 )
 [node name="Node2D" type="Node2D"]
 
 [node name="Side-view player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -32, 0 )
+position = Vector2( -28, -3 )
 jump = 350
 
 [node name="TileMap" type="TileMap" parent="."]

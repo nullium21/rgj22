@@ -18,6 +18,7 @@ var velocity = Vector2.ZERO
 
 onready var _tip: Label = $"Tip/Label"
 onready var _tip_tex: NinePatchRect = $"Tip"
+var _picked_up_staff = false
 
 var _tips = {
 	"door_key_required": "Press C/LMB to use the key (staff).",
@@ -67,7 +68,7 @@ func _physics_process(delta):
 	
 	var tip_shown = false
 	
-	# check for collision with teleport (door)
+	# check for collisions with various objects
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
 		if collision.collider == null:
@@ -95,9 +96,12 @@ func _physics_process(delta):
 				tip_shown = true
 				if Input.is_action_pressed("melee_attack"):
 					get_tree().change_scene("res://door-minigame/mini-game-2-scene.tscn")
-			elif collider.is_in_group("magic-fern"):
+			elif collider.is_in_group("magic-fern") and _picked_up_staff:
 				# TODO: play some animation, etc.
 				get_tree().change_scene("res://cave/scene.tscn")
+			elif collider.is_in_group("staff"):
+				_picked_up_staff = true
+				$"../Staff".queue_free()
 	
 	if _tip_tex != null:
 		_tip_tex.visible = tip_shown
@@ -106,6 +110,16 @@ func _physics_process(delta):
 		self.queue_free()
 
 	move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP)
+
+	# play animation for player
+	if not ai_enabled:
+		if velocity != Vector2.ZERO:
+			$AnimationTree.get("parameters/playback").travel("Walk")
+			$AnimationTree.set("parameters/Walk/blend_position", velocity)
+			$AnimationTree.set("parameters/Idle/blend_position", velocity)
+		else:
+			$AnimationTree.get("parameters/playback").travel("Idle")
+
 
 	var distance_to_closest_enemy = INF
 	for enemy in get_tree().get_nodes_in_group("not_ai_entity" if ai_enabled else "ai_entity"):
