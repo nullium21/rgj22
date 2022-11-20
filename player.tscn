@@ -10,9 +10,6 @@
 [ext_resource path="res://tilemaps/player.png" type="Texture" id=8]
 [ext_resource path="res://door-minigame/Item.gd" type="Script" id=9]
 
-[sub_resource type="RectangleShape2D" id=43]
-extents = Vector2( 6, 11.25 )
-
 [sub_resource type="AtlasTexture" id=44]
 flags = 2
 atlas = ExtResource( 5 )
@@ -36,12 +33,76 @@ region = Rect2( 82, 24, 17, 17 )
 atlas = ExtResource( 8 )
 region = Rect2( 98, 1, 14, 31 )
 
+[sub_resource type="RectangleShape2D" id=43]
+extents = Vector2( 6, 11.25 )
+
 [node name="Side-view player" type="KinematicBody2D"]
-position = Vector2( 97, 70 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+offset = Vector2( 160, 90 )
+transform = Transform2D( 1, 0, 0, 1, 160, 90 )
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+script = ExtResource( 7 )
+
+[node name="HeartsUIEmpty" type="TextureRect" parent="CanvasLayer/UI"]
+margin_left = -153.0
+margin_top = -86.0
+margin_right = -105.0
+margin_bottom = -70.0
+texture = ExtResource( 6 )
+stretch_mode = 2
+
+[node name="HeartsUIFull" type="TextureRect" parent="CanvasLayer/UI"]
+margin_left = -153.0
+margin_top = -86.0
+margin_right = -105.0
+margin_bottom = -70.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 2
+
+[node name="Pause" type="TextureButton" parent="CanvasLayer/UI"]
+margin_left = 135.0
+margin_top = -86.0
+margin_right = 151.0
+margin_bottom = -70.0
+texture_normal = SubResource( 44 )
+expand = true
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/UI/Pause"]
+position = Vector2( -136, 88 )
+scale = Vector2( 33.6, 192 )
+texture = SubResource( 45 )
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/UI/Pause"]
+margin_left = -152.0
+margin_top = 104.0
+margin_right = -120.0
+margin_bottom = 136.0
+texture_normal = SubResource( 46 )
+expand = true
+
+[node name="Slot1" type="TextureRect" parent="CanvasLayer/UI"]
+margin_left = 135.0
+margin_top = 66.0
+margin_right = 151.0
+margin_bottom = 82.0
+texture = SubResource( 47 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/UI/Slot1"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = SubResource( 48 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 9 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -53,63 +114,5 @@ current = true
 position = Vector2( -0.5, 6 )
 shape = SubResource( 43 )
 
-[node name="UI" type="Control" parent="."]
-rect_pivot_offset = Vector2( -241, -46 )
-script = ExtResource( 7 )
-
-[node name="HeartsUIEmpty" type="TextureRect" parent="UI"]
-margin_left = -153.0
-margin_top = -86.0
-margin_right = -105.0
-margin_bottom = -70.0
-texture = ExtResource( 6 )
-stretch_mode = 2
-
-[node name="HeartsUIFull" type="TextureRect" parent="UI"]
-margin_left = -153.0
-margin_top = -86.0
-margin_right = -105.0
-margin_bottom = -70.0
-texture = ExtResource( 4 )
-expand = true
-stretch_mode = 2
-
-[node name="Pause" type="TextureButton" parent="UI"]
-margin_left = 135.0
-margin_top = -86.0
-margin_right = 151.0
-margin_bottom = -70.0
-texture_normal = SubResource( 44 )
-expand = true
-
-[node name="Sprite" type="Sprite" parent="UI/Pause"]
-position = Vector2( -136, 88 )
-scale = Vector2( 33.6, 192 )
-texture = SubResource( 45 )
-
-[node name="TextureButton" type="TextureButton" parent="UI/Pause"]
-margin_left = -152.0
-margin_top = 104.0
-margin_right = -120.0
-margin_bottom = 136.0
-texture_normal = SubResource( 46 )
-expand = true
-
-[node name="Slot1" type="TextureRect" parent="UI"]
-margin_left = 135.0
-margin_top = 66.0
-margin_right = 151.0
-margin_bottom = 82.0
-texture = SubResource( 47 )
-expand = true
-
-[node name="Icon" type="TextureRect" parent="UI/Slot1"]
-margin_right = 16.0
-margin_bottom = 16.0
-texture = SubResource( 48 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 9 )
-
-[connection signal="pressed" from="UI/Pause" to="UI" method="_on_Pause_pressed"]
-[connection signal="pressed" from="UI/Pause/TextureButton" to="UI" method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Pause" to="CanvasLayer/UI" method="_on_Pause_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Pause/TextureButton" to="CanvasLayer/UI" method="_on_TextureButton_pressed"]

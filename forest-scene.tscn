@@ -425,7 +425,6 @@ position = Vector2( 224, 192 )
 position = Vector2( 272, 192 )
 
 [node name="Side-view player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, 0 )
 script = ExtResource( 6 )
 gravity_enabled = false
 ai_enabled = false

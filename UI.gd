@@ -36,7 +36,9 @@ func set_is_paused(value):
 	playButton.visible = is_paused
 
 func _on_TextureButton_pressed():
-	self.is_paused = false
+	print("on texture button pressed")
+	set_is_paused(!self.is_paused)
 
 func _on_Pause_pressed():
-	self.is_paused = !is_paused
+	print("on pause pressed")
+	set_is_paused(!self.is_paused)
