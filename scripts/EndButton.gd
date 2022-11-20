@@ -14,4 +14,4 @@ func drop_data(position, data):
 
 func _process(delta):
 	if pressed:
-		get_tree().change_scene("res://base-scene.tscn")
+		get_tree().change_scene("res://platformer/scene.tscn")

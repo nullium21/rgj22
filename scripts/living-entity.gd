@@ -28,6 +28,7 @@ var _tips = {
 }
 
 func _ready():
+	# check if we are on cave scene
 	if get_node("/root/Node2D2") != null and not ai_enabled:
 		$Sprite.texture = load("res://player/player-anim-staff.png")
 	add_to_group("ai_entity" if ai_enabled else "not_ai_entity")
@@ -94,7 +95,7 @@ func _physics_process(delta):
 			if collider.is_in_group("teleport-spawn"):
 				get_tree().change_scene("res://base-scene.tscn")
 			elif collider.is_in_group("teleport-platformer"):
-				get_tree().change_scene("res://platformer-scene.tscn")
+				get_tree().change_scene("res://platformer/scene.tscn")
 			elif collider.is_in_group("door"):
 				show_tip("door_key_required")
 				tip_shown = true
