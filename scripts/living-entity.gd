@@ -14,6 +14,8 @@ export var max_health = 5
 export var health     = 5
 export var heal_delay = 0.1
 
+export(StreamTexture) var begin_player_texture = null
+
 var velocity = Vector2.ZERO
 
 onready var _tip: Label = $"Tip/Label"
@@ -26,6 +28,8 @@ var _tips = {
 }
 
 func _ready():
+	if get_node("/root/Node2D2") != null and not ai_enabled:
+		$Sprite.texture = load("res://player/player-anim-staff.png")
 	add_to_group("ai_entity" if ai_enabled else "not_ai_entity")
 
 var _time_since_last_heal: float = 0
@@ -102,6 +106,7 @@ func _physics_process(delta):
 			elif collider.is_in_group("staff"):
 				_picked_up_staff = true
 				$"../Staff".queue_free()
+				$Sprite.texture = load("res://player/player-anim-staff.png")
 	
 	if _tip_tex != null:
 		_tip_tex.visible = tip_shown
